@@ -7,8 +7,23 @@ body {
 .AttributeCell {
   margin: auto;
   text-align: center;
+  padding: 2px;
 }
 
 th {
   border: 1px solid black;
+}
+
+table, .padding {
+  margin: 5px;
+}
+
+.generalCell {
+  min-width: 20px;
+  text-align: center;
+  padding: 2px;
+}
+
+.inline {
+  display: inline;
 }

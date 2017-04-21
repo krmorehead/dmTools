@@ -14,8 +14,12 @@ class App extends React.Component {
     var template = (
       <div>
         <Header />
-        <div className="col-md-5">
+        <div className='padding'>
           <AttributeCard stats={ this.state.character.attributes }/>
+          <GeneralTable tableValues={ this.state.character.combat_table }/>
+        </div>
+        <div className='padding'>
+          <GeneralTable tableValues={ this.state.character.inventory }/>
         </div>
       </div>
     );
