@@ -2,25 +2,20 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.state.currentVideo = props.videos[0];
-    this.state.videos = props.videos;
+    this.state.character = props.character;
 
     // Public functions
     this.setCurrentVideo = (video) => {
       this.setState({currentVideo: video});
     }
-
   }
 
   render() {
     var template = (
       <div>
         <Header />
-        <div className="col-md-7">
-          <VideoPlayer video={ this.state.currentVideo }/>
-        </div>
         <div className="col-md-5">
-          <VideoList videos={ this.state.videos } setCurrentVideo = { this.setCurrentVideo }/>
+          <AttributeCard stats={ this.state.character.attributes }/>
         </div>
       </div>
     );
@@ -28,7 +23,8 @@ class App extends React.Component {
   };
 }
 
+          // <VideoList videos={ this.state.videos } setCurrentVideo = { this.setCurrentVideo }/>
 ReactDOM.render(
-  <App videos={ window.exampleVideoData }/>,
+  <App character={ window.exampleCharacter }/>,
   document.getElementById('app')
 )
