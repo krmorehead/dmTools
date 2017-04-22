@@ -25,18 +25,18 @@ class GeneralTable extends React.Component{
 }
 
 var buildGeneralRows = (props) => {
-  var tableRows = _.filter(props.tableValues, tableValue => {return !tableValue.skipRow})
+  var tableRows = _.filter(props.tableValues, tableValue => {return !tableValue.skipRow});
+
   return _.map(tableRows, tableRow => {
-    return <tr key ={ tableRow.orderPriority }>
-      { buildRow(props.tableValues.columns.values, tableRow) }
-    </tr>
+    return buildRow(props.tableValues.columns.values, tableRow);
   });
 }
 
 var buildRow = (columns, rowData) => {
-  return _.map(columns, (column, index) => {
-      return <th className='generalCell' key={ index }>{ rowData[column.slug] }</th>
+  var values = _.map(columns, (column, index) => {
+      return rowData[column.slug]
     })
+  return (<GeneralRow key={ rowData.orderPriority } values={ values }/>)
 }
 
 var cleanTableRow = (tableValues) => {

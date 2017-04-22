@@ -8,13 +8,24 @@ class App extends React.Component {
     this.setCurrentVideo = (video) => {
       this.setState({currentVideo: video});
     }
+    this.changeAttr = (attr, newValue) => {
+      var characterCopy = _.cloneDeep(this.state.character);
+      characterCopy.attributes[attr].value = newValue;
+      this.setState({character: characterCopy});
+    }
+
   }
 
   render() {
     var template = (
       <div>
         <Header />
-        <SkillBar className='inLine' />
+        <div className='sideBar padding'>
+          <SkillBar
+          className='inLine'
+          stats={ this.state.character.attributes }
+          skillList={ this.skillList }/>
+        </div>
         <div className='padding inline'>
           <AttributeCard stats={ this.state.character.attributes }/>
           <GeneralTable tableValues={ this.state.character.combat_table }/>
@@ -28,7 +39,6 @@ class App extends React.Component {
   };
 }
 
-          // <VideoList videos={ this.state.videos } setCurrentVideo = { this.setCurrentVideo }/>
 ReactDOM.render(
   <App character={ window.exampleCharacter }/>,
   document.getElementById('app')
