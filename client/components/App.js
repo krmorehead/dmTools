@@ -13,7 +13,11 @@ class App extends React.Component {
       characterCopy.attributes[attr].value = newValue;
       this.setState({character: characterCopy});
     }
-
+    this.changeCharacterTable = (table, key, newValue) => {
+      var characterCopy = _.cloneDeep(this.state.character);
+      characterCopy[table][key].value = newValue;
+      this.setState({character: characterCopy})
+    }
   }
 
   render() {
@@ -28,7 +32,7 @@ class App extends React.Component {
         </div>
         <div className='padding inline'>
           <AttributeCard stats={ this.state.character.attributes }/>
-          <GeneralTable tableValues={ this.state.character.combat_table }/>
+          <CombatTable changeTable={ this.changeCharacterTable } tableName={ 'combat_table' } combat_table = { this.state.character.combat_table }/>
         </div>
         <div className='padding inventory'>
           <GeneralTable className='padding' tableValues={ this.state.character.inventory }/>

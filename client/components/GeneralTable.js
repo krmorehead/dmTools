@@ -78,9 +78,13 @@ var buildHeader = (areTableHeaders, tableHeaders) => {
 }
 
 var buildTableHeaders= (columns) => {
-  return _.map(columns.values, (columnValue) => {
-    return columnValue.readable_value;
-  });
+  if (columns.tableHeaders) {
+    return columns.tableHeaders;
+  } else {
+    return _.map(columns.values, (columnValue) => {
+      return columnValue.readable_value;
+    });
+  }
 }
 
 window.GeneralTable = GeneralTable;
