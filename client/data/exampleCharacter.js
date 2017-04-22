@@ -65,6 +65,12 @@ window.exampleCharacter = {
       value: 3,
       max: 3,
       orderPriority: 6
+    },
+    hd: {
+      readable_value: 'Hit Die',
+      value: 4,
+      max: 4,
+      orderPriority: 7
     }
   },
   inventory: {
