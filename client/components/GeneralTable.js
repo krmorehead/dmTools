@@ -63,7 +63,7 @@ var buildTitle = (title, tableHeaders) => {
   if (title) {
     return (
       <tr>
-        <th colSpan="3">{title}</th>
+        <th colSpan={ tableHeaders.length }>{title}</th>
       </tr>
     )
   }

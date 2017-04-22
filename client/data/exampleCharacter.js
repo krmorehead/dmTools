@@ -38,7 +38,10 @@ window.exampleCharacter = {
     hp: {
       readable_value: 'HP',
       value: 34,
-      orderPriority: 1
+      orderPriority: 1,
+      max: 34,
+      slug: 'hp',
+      levels : [10, 4, 4, 4]
     },
     ac: {
       readable_value: 'AC',
