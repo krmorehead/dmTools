@@ -75,7 +75,7 @@ window.exampleCharacter = {
         {slug: 'description'},
         {slug: 'value', editable: true}
         ],
-      skipRow: true
+      skipRow: true,
     },
     rapier: {
       readable_value: 'Rapier',

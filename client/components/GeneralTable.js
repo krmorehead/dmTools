@@ -1,6 +1,7 @@
 class GeneralTable extends React.Component{
   constructor(props) {
     super(props)
+    cleanTableRow(props.tableValues)
     // this.tableHeaders = buildTableHeaders(this.props.);
   }
   // TODO: Add a generalized header
@@ -32,6 +33,18 @@ var buildRow = (columns, rowData) => {
   return _.map(columns, (column, index) => {
       return <th className='generalCell' key={ index }>{ rowData[column.slug] }</th>
     })
+}
+
+var cleanTableRow = (tableValues) => {
+  var isUnordered = _.some(tableValues, (value) => {
+    return (!value.orderPriority && !value.skipRow);
+  });
+  if (isUnordered) {
+    var orderNumber = 0;
+    _.each(tableValues, (value) => {
+      value.orderPriority = orderNumber++;
+    });
+  }
 }
 
 window.GeneralTable = GeneralTable;
