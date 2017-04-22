@@ -14,7 +14,10 @@ class App extends React.Component {
     var template = (
       <div>
         <Header />
-        <SkillBar className='inLine' />
+        <SkillBar
+          className='inLine'
+          stats={ this.state.character.attributes }
+          skillList={ this.skillList }/>
         <div className='padding inline'>
           <AttributeCard stats={ this.state.character.attributes }/>
           <GeneralTable tableValues={ this.state.character.combat_table }/>
