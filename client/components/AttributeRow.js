@@ -7,15 +7,15 @@ class AttributeRow extends React.Component{
     var stat = this.props.stat;
     return (
       <tr className='AttributeRow'>
-        <th>
+        <td>
           { stat.readable_value }
-        </th>
-        <th className='AttributeCell'>
+        </td>
+        <td className='AttributeCell'>
           { stat.value }
-        </th>
-        <th className='AttributeCell'>
+        </td>
+        <td className='AttributeCell'>
           { calculateBonus(stat.value) }
-        </th>
+        </td>
       </tr>
     )
   }

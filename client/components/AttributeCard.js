@@ -5,8 +5,11 @@ class AttributeCard extends React.Component{
 
   render () {
     return (
-      <table className="AttributeCard">
+      <table className="AttributeCard inline">
         <thead>
+          <tr>
+            <th colSpan="3">Attributes</th>
+          </tr>
           <TableHeader columns={ ['Attribute', 'Score', 'Bonus'] }/>
         </thead>
         <tbody>

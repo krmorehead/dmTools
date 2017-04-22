@@ -2,13 +2,52 @@
 
 body {
   background: #f1f1f1;
+  background-image: url('backgroundImages/The_Underdark.jpg');
+  background-size: 100%;
+  color: rgb(220, 220, 220);
 }
 
 .AttributeCell {
   margin: auto;
   text-align: center;
+  padding: 2px;
 }
 
-th {
-  border: 1px solid black;
+th, td {
+  text-align: center;
+  background-color: rgba(100, 130, 100, 0.7);
+  border: 1px solid rgb(200, 200, 200);
+  flex-grow: 1;
+  word-wrap: break-word;
+}
+
+table, .padding {
+  margin: 5px;
+}
+
+tr {
+  border: 1px solid rgb(200, 200, 200);
+  -webkit-box-shadow: 0px 0.5px 1px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0.5px 1px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0.5px 1px 0px rgba(0,0,0,0.75);
+}
+
+.generalCell {
+  margin: auto;
+  min-width: 20px;
+  text-align: center;
+  padding: 2px;
+}
+
+.inline {
+  display: inline;
+}
+
+.SkillBar {
+  float: left;
+  max-width: 20vw;
+}
+
+.mw20{
+  max-width: 20vw;
 }
