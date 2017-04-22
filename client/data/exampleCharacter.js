@@ -29,7 +29,7 @@ window.exampleCharacter = {
   },
   combat_table: {
     columns: {
-      value: [
+      values: [
         {slug: 'readable_value'},
         {slug: 'value'},
         ],
@@ -69,13 +69,14 @@ window.exampleCharacter = {
   },
   inventory: {
     columns: {
-      value: [
-        {slug: 'readable_value'},
-        {slug: 'quantity', editable: true, type: 'number'},
-        {slug: 'description'},
-        {slug: 'value', editable: true}
+      values: [
+        {slug: 'readable_value', readable_value: 'Name'},
+        {slug: 'quantity', readable_value: 'Quantity', editable: true, type: 'number'},
+        {slug: 'description', readable_value: 'Description'},
+        // {slug: 'value', editable: true}
         ],
       skipRow: true,
+      title: 'Inventory'
     },
     rapier: {
       readable_value: 'Rapier',

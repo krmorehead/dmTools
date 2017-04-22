@@ -5,7 +5,6 @@ class SkillBar extends React.Component{
 
   render () {
     return (<div className='SkillBar inLine'>
-      Hi again
       </div>
     )
   }

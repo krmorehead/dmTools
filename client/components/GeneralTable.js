@@ -2,16 +2,20 @@ class GeneralTable extends React.Component{
   constructor(props) {
     super(props)
     cleanTableRow(props.tableValues)
-    // this.tableHeaders = buildTableHeaders(this.props.);
+    this.tableHeaders = buildTableHeaders(props.tableValues.columns);
+    this.areTableHeaders = _.some(this.tableHeaders, (header) => {return !!header})
+    this.title = _.get(this, 'props.tableValues.columns.title')
   }
   // TODO: Add a generalized header
-  // <thead>
-  //   <TableHeader columns={ this.tableHeaders }/>
-  // </thead>
+      // 
 
   render () {
     return (
       <table className="GeneralTable inline">
+        <thead>
+          {buildTitle(this.title, this.tableHeaders)}
+          {buildHeader(this.areTableHeaders, this.tableHeaders)}
+        </thead>
         <tbody>
           {buildGeneralRows(this.props)}
         </tbody>
@@ -24,7 +28,7 @@ var buildGeneralRows = (props) => {
   var tableRows = _.filter(props.tableValues, tableValue => {return !tableValue.skipRow})
   return _.map(tableRows, tableRow => {
     return <tr key ={ tableRow.orderPriority }>
-      { buildRow(props.tableValues.columns.value, tableRow) }
+      { buildRow(props.tableValues.columns.values, tableRow) }
     </tr>
   });
 }
@@ -45,6 +49,30 @@ var cleanTableRow = (tableValues) => {
       value.orderPriority = orderNumber++;
     });
   }
+}
+
+var buildTitle = (title, tableHeaders) => {
+  if (title) {
+    return (
+      <tr>
+        <th colSpan="3">{title}</th>
+      </tr>
+    )
+  }
+}
+
+var buildHeader = (areTableHeaders, tableHeaders) => {
+  if (areTableHeaders) {
+    return (
+      <TableHeader columns={ tableHeaders }/>
+    )
+  }
+}
+
+var buildTableHeaders= (columns) => {
+  return _.map(columns.values, (columnValue) => {
+    return columnValue.readable_value;
+  });
 }
 
 window.GeneralTable = GeneralTable;
