@@ -20,7 +20,7 @@ class App extends React.Component {
     var template = (
       <div>
         <Header />
-        <div className='sideBar padding'>
+        <div className='sideBar'>
           <SkillBar
           className='inLine'
           stats={ this.state.character.attributes }
@@ -30,8 +30,8 @@ class App extends React.Component {
           <AttributeCard stats={ this.state.character.attributes }/>
           <GeneralTable tableValues={ this.state.character.combat_table }/>
         </div>
-        <div className='padding'>
-          <GeneralTable tableValues={ this.state.character.inventory }/>
+        <div className='padding inventory'>
+          <GeneralTable className='padding' tableValues={ this.state.character.inventory }/>
         </div>
       </div>
     );

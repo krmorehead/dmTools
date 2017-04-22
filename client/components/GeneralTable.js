@@ -11,7 +11,7 @@ class GeneralTable extends React.Component{
 
   render () {
     return (
-      <table className="GeneralTable inline">
+      <table className="GeneralTable padding inline">
         <thead>
           {buildTitle(this.title, this.tableHeaders)}
           {buildHeader(this.areTableHeaders, this.tableHeaders)}
@@ -34,9 +34,17 @@ var buildGeneralRows = (props) => {
 
 var buildRow = (columns, rowData) => {
   var values = _.map(columns, (column, index) => {
-      return rowData[column.slug]
+      return buildValue(rowData, column);
     })
   return (<GeneralRow key={ rowData.orderPriority } values={ values }/>)
+}
+
+var buildValue = (rowData, column) => {
+  var value = {value: rowData[column.slug]};
+  if (rowData.max && column.slug === 'value') {
+    value.max = rowData.max;
+  }
+  return value;
 }
 
 var cleanTableRow = (tableValues) => {
