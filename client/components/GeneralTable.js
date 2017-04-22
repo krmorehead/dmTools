@@ -35,7 +35,7 @@ var buildGeneralRows = (props) => {
 
 var buildRow = (columns, rowData) => {
   return _.map(columns, (column, index) => {
-      return <th className='generalCell' key={ index }>{ rowData[column.slug] }</th>
+      return <td className='generalCell' key={ index }>{ rowData[column.slug] }</td>
     })
 }
 

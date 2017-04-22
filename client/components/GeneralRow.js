@@ -13,8 +13,8 @@ class GeneralRow extends React.Component{
 }
 
 var buildCells = (values) => {
-  return _.map(values, (value) => {
-    return <th>{ value }</th>
+  return _.map(values, (value, index) => {
+    return <td key={ index }>{ value }</td>
   })
 }
 
