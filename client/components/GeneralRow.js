@@ -1,6 +1,19 @@
 class GeneralRow extends React.Component{
   constructor(props) {
     super(props)
+    this.subtract = (key, amount) => {
+      this[key].value = this[key].value - amount;
+      this.props.changeTable(this.tableName, key, this[key].value);
+    }
+    this.add = (key, amount) => {
+      this[key].value = this[key].value + amount;
+      this.props.changeTable(this.tableName, key, this[key].value);
+    }
+    this.reset = (key) => {
+      this[key].value = this[key].max;
+      this.props.changeTable(this.tableName, key, this[key].value);
+    }
+
   }
 
   render () {

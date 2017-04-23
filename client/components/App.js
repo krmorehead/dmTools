@@ -35,7 +35,7 @@ class App extends React.Component {
           <CombatTable changeTable={ this.changeCharacterTable } tableName={ 'combat_table' } combat_table = { this.state.character.combat_table }/>
         </div>
         <div className='padding inventory'>
-          <GeneralTable className='padding' tableValues={ this.state.character.inventory }/>
+          <GeneralTable changeTable={ this.changeCharacterTable } tableName={ 'inventory' } className='padding' tableValues={ this.state.character.inventory }/>
         </div>
       </div>
     );

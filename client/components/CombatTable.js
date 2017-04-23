@@ -25,7 +25,7 @@ class CombatTable extends React.Component{
 
   render () {
     return (
-      <GeneralTable tableValues={ this.props.combat_table }/>
+      <GeneralTable changeTable={ this.props.changeTable } tableName={ this.tableName } tableValues={ this.props.combat_table }/>
     )
   }
 }

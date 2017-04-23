@@ -1,13 +1,18 @@
 class GeneralTable extends React.Component{
   constructor(props) {
     super(props)
+    this.state = {};
+
     cleanTableRow(props.tableValues)
     this.tableHeaders = buildTableHeaders(props.tableValues.columns);
     this.areTableHeaders = _.some(this.tableHeaders, (header) => {return !!header})
     this.title = _.get(this, 'props.tableValues.columns.title')
+    this.tableName = this.props.tableName;
+
+    this.state.changeRow = (key, newValue) => {
+      this.props.changeTable(this.tableName, key, newValue)
+    }
   }
-  // TODO: Add a generalized header
-      // 
 
   render () {
     return (
@@ -17,26 +22,26 @@ class GeneralTable extends React.Component{
           {buildHeader(this.areTableHeaders, this.tableHeaders)}
         </thead>
         <tbody>
-          {buildGeneralRows(this.props)}
+          {buildGeneralRows(this.props, this.state)}
         </tbody>
       </table>
     )
   }
 }
 
-var buildGeneralRows = (props) => {
+var buildGeneralRows = (props, state) => {
   var tableRows = _.filter(props.tableValues, tableValue => {return !tableValue.skipRow});
 
   return _.map(tableRows, tableRow => {
-    return buildRow(props.tableValues.columns.values, tableRow);
+    return buildRow(props.tableValues.columns.values, tableRow, state);
   });
 }
 
-var buildRow = (columns, rowData) => {
+var buildRow = (columns, rowData, state) => {
   var values = _.map(columns, (column, index) => {
       return buildValue(rowData, column);
     })
-  return (<GeneralRow key={ rowData.orderPriority } values={ values }/>)
+  return (<GeneralRow changeRow={ state.changeRow } key={ rowData.orderPriority } values={ values }/>)
 }
 
 var buildValue = (rowData, column) => {
