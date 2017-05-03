@@ -11,7 +11,8 @@ class TableHeader extends React.Component{
 
     this.buildColumns = (columns) => {
       return _.map(columns, (column, key) => {
-        return <th onClick={ () => { return this.sortBy(column.slug) } } key={ key }>{ column.value }</th>
+        var value = column.value ? column.value : column;
+        return <th onClick={ () => { return this.sortBy(column.slug) } } key={ key }>{ value }</th>
       })
     }
   }
