@@ -43,9 +43,6 @@ class App extends React.Component {
   };
 }
 
-// <button onClick={ () => {return this.changeAttr('cha', this.state.character.attributes.cha.value +1)} }>Increase Charisma</button>
-
-
 ReactDOM.render(
   <App character={ window.exampleCharacter }/>,
   document.getElementById('app')

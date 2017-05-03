@@ -1,8 +1,24 @@
 class SkillBar extends React.Component{
   constructor(props) {
     super(props)
-    this.skills = getSkills()
-    this.columns = ['Skill Name', 'Attr.', 'Bonus'];
+    this.state = {};
+    this.state.skills = getSkills()
+    this.columns = [{value: 'Skill Name', slug: 'name'}, {value: 'Attr.', slug: 'attr'}, {value: 'Bonus', slug: 'bonus'}];
+
+    this.sortBy = (slug) => {
+      var sortedSkills;
+      var stats = this.props.stats;
+      if (slug === 'bonus') {
+        sortedSkills = _.sortBy(this.state.skills, function (skill1) {
+          return -calculateBonus(stats[skill1.attr].value);
+        })
+      } else {
+        sortedSkills = _.sortBy(this.state.skills, slug);
+
+      }
+      this.setState({skills: sortedSkills});
+    }
+
   }
 
   render () {
@@ -12,10 +28,10 @@ class SkillBar extends React.Component{
           <tr>
             <th colSpan={ this.columns.length }>Skills</th>
           </tr>
-          <TableHeader columns={ this.columns }/>
+          <TableHeader sortBy={ this.sortBy } columns={ this.columns }/>
         </thead>
         <tbody>
-          { buildSkillRows(this.skills, this.props.stats) }
+          { buildSkillRows(this.state.skills, this.props.stats) }
         </tbody>
       </table>
     )
