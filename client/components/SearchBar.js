@@ -1,4 +1,26 @@
 class SearchBar extends React.Component{
+  render () {
+    return (
+      <tr>
+        <td colSpan='3'>
+          <div>
+            <span>
+              <input
+                type='text'
+                className='tableSearchBar'
+                value={ this.state.searchQuery }
+                onChange={ this.searchData }
+                onFocus={ this.startSearch }
+                onBlur={ this.endSearch }/>
+              { renderIcon(this.state.displayIcon) }
+              <button className='clearSearch' onClick={ this.clearSearch }><i className='material-icons clearSearchIcon'>clear</i></button>
+            </span>
+          </div>
+        </td>
+      </tr>
+    )
+  }
+
   constructor(props) {
     super(props)
     this.state = {};
@@ -11,7 +33,7 @@ class SearchBar extends React.Component{
 
     this.searchData = (event) => {
       this.setState({displayIcon: false});
-      var query = event.target.value
+      var query = _.get(event, 'target.value', '');
 
       this.setState({searchQuery: query})
       var props = this.props;
@@ -33,25 +55,12 @@ class SearchBar extends React.Component{
         this.setState({displayIcon: true});
       }
     }
-  }
 
-  render () {
-    return (
-      <tr>
-        <td colSpan='3'>
-          <div>
-            <input
-              type='text'
-              className='tableSearchBar'
-              value={ this.state.searchQuery }
-              onChange={ this.searchData }
-              onFocus={ this.startSearch }
-              onBlur={ this.endSearch }/>
-            { renderIcon(this.state.displayIcon) }
-          </div>
-        </td>
-      </tr>
-    )
+    this.clearSearch = () => {
+      this.setState({searchQuery: ''});
+      this.searchData();
+      this.setState({displayIcon: true});
+    }
   }
 }
 
