@@ -1,11 +1,15 @@
 class SkillBar extends React.Component{
   constructor(props) {
     super(props)
+    const DEFAULT_SKILLS = getSkills();
+    this.DEFAULT_SKILLS = DEFAULT_SKILLS
+
     this.state = {};
-    this.state.skills = getSkills()
+    this.state.skills = DEFAULT_SKILLS;
     this.columns = [{value: 'Skill Name', slug: 'name', sort: 'as'}, {value: 'Attr.', slug: 'attr'}, {value: 'Bonus', slug: 'bonus'}];
     this.sortProperty = 'name';
     this.asc = true;
+
 
     this.sortBy = (slug) => {
       var sortedSkills;
@@ -27,6 +31,10 @@ class SkillBar extends React.Component{
       this.setState({skills: sortedSkills});
     }
 
+    this.setRows = (skills) => {
+      this.setState({skills: skills})
+    }
+
   }
 
   render () {
@@ -39,6 +47,7 @@ class SkillBar extends React.Component{
           <TableHeader sortBy={ this.sortBy } columns={ this.columns }/>
         </thead>
         <tbody>
+          <SearchBar searchSlug='name' data={ this.DEFAULT_SKILLS } setRows={ this.setRows } />
           { buildSkillRows(this.state.skills, this.props.stats) }
         </tbody>
       </table>
