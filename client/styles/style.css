@@ -62,4 +62,15 @@ tr {
 .sideBar {
   width: 200px;
   float: left;
+  margin-right: 5px;
+}
+
+button{
+  border-radius: 5px;
+  color: white;
+  background-color: rgba(20, 120, 20, 0.8);
+}
+
+.md-18 {
+  font-size: 18px !important;
 }

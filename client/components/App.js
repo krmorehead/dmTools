@@ -13,14 +13,18 @@ class App extends React.Component {
       characterCopy.attributes[attr].value = newValue;
       this.setState({character: characterCopy});
     }
-
+    this.changeCharacterTable = (table, key, newValue) => {
+      var characterCopy = _.cloneDeep(this.state.character);
+      characterCopy[table][key].value = newValue;
+      this.setState({character: characterCopy})
+    }
   }
 
   render() {
     var template = (
       <div>
         <Header />
-        <div className='sideBar padding'>
+        <div className='sideBar'>
           <SkillBar
           className='inLine'
           stats={ this.state.character.attributes }
@@ -28,16 +32,19 @@ class App extends React.Component {
         </div>
         <div className='padding inline'>
           <AttributeCard stats={ this.state.character.attributes }/>
-          <GeneralTable tableValues={ this.state.character.combat_table }/>
+          <CombatTable changeTable={ this.changeCharacterTable } tableName={ 'combat_table' } combat_table = { this.state.character.combat_table }/>
         </div>
-        <div className='padding'>
-          <GeneralTable tableValues={ this.state.character.inventory }/>
+        <div className='padding inventory'>
+          <GeneralTable changeTable={ this.changeCharacterTable } tableName={ 'inventory' } className='padding' tableValues={ this.state.character.inventory }/>
         </div>
       </div>
     );
   return template
   };
 }
+
+// <button onClick={ () => {return this.changeAttr('cha', this.state.character.attributes.cha.value +1)} }>Increase Charisma</button>
+
 
 ReactDOM.render(
   <App character={ window.exampleCharacter }/>,
