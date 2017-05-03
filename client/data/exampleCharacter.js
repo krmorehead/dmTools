@@ -97,7 +97,7 @@ window.exampleCharacter = {
         {slug: 'readable_value', readable_value: 'Name'},
         {slug: 'quantity', readable_value: 'Quantity', editable: true, type: 'number'},
         {slug: 'description', readable_value: 'Description'},
-        // {slug: 'value', editable: true}
+        {slug: 'weight', readable_value: 'Weight', editable: true}
         ],
       skipRow: true,
       title: 'Inventory'

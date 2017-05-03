@@ -2,21 +2,30 @@ class TableHeader extends React.Component{
   constructor(props) {
     super(props)
     this.columns = this.props.columns;
+
+    this.sortBy = (value) => {
+      if (this.props.sortBy) {
+        this.props.sortBy(value);
+      }
+    };
+
+    this.buildColumns = (columns) => {
+      return _.map(columns, (column, key) => {
+        var value = column.value ? column.value : column;
+        return <th onClick={ () => { return this.sortBy(column.slug) } } key={ key }>{ value }</th>
+      })
+    }
   }
 
   render () {
     return (
       <tr className='TableHeader'>
-        { buildColumns(this.columns) }
+        { this.buildColumns(this.columns) }
       </tr>
     )
   }
 }
 
-var buildColumns = (columns) => {
-  return _.map(columns, (columnName, index) => {
-    return <th key={ index }>{ columnName }</th>
-  })
-}
+
 
 window.TableHeader = TableHeader;

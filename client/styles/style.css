@@ -63,6 +63,7 @@ tr {
   width: 200px;
   float: left;
   margin-right: 5px;
+  height: 100vh;
 }
 
 button{
@@ -73,4 +74,31 @@ button{
 
 .md-18 {
   font-size: 18px !important;
+}
+
+.tableSearchBar {
+  border: 0px;
+  opacity: 0.5;
+  color: black;
+  text-align: right;
+  width: calc(100% - 24px);
+  margin: 2px 2px 2px 2px;
+  float: left;
+}
+
+.searchIcon {
+  position: absolute;
+  margin-left: -2.4vw;
+  pointer-events: none;
+}
+
+.clearSearch {
+  max-width: 20px;
+  max-height: 20px;
+  vertical-align: middle;
+  padding: 0 0 0 0;
+}
+.clearSearchIcon {
+  margin: -2px 0 0 -2px;
+  font-size: 20px !important;
 }
