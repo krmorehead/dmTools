@@ -70,3 +70,7 @@ button{
   color: white;
   background-color: rgba(20, 120, 20, 0.8);
 }
+
+.md-18 {
+  font-size: 18px !important;
+}

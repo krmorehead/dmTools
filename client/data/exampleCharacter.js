@@ -41,39 +41,54 @@ window.exampleCharacter = {
       orderPriority: 1,
       max: 34,
       slug: 'hp',
-      levels : [10, 4, 4, 4]
+      levels : [10, 4, 4, 4],
+      editFields: {
+        number: true
+      }
     },
     ac: {
       readable_value: 'AC',
+      slug: 'ac',
       value: 17,
       orderPriority: 2
     },
     speed: {
       readable_value: 'Speed',
+      slug: 'speed',
       value: 30,
       orderPriority: 3
     },
     init: {
       readable_value: 'Initiative',
+      slug: 'init',
       value: 4,
       orderPriority: 4
     },
     carry: {
       readable_value: 'Carrying Capacity',
+      slug: 'carry',
       value: 210,
       orderPriority: 5
     },
     sp: {
       readable_value: 'Sorcery Points',
+      slug: 'sp',
       value: 3,
       max: 3,
-      orderPriority: 6
+      orderPriority: 6,
+      editFields: {
+        number: true
+      }
     },
     hd: {
       readable_value: 'Hit Die',
+      slug: 'hd',
       value: 4,
       max: 4,
-      orderPriority: 7
+      orderPriority: 7,
+      editFields: {
+        number: true
+      }
     }
   },
   inventory: {

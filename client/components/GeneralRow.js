@@ -1,25 +1,45 @@
 class GeneralRow extends React.Component{
   constructor(props) {
     super(props)
-    this.subtract = (key, amount) => {
-      this[key].value = this[key].value - amount;
-      this.props.changeTable(this.tableName, key, this[key].value);
-    }
-    this.add = (key, amount) => {
-      this[key].value = this[key].value + amount;
-      this.props.changeTable(this.tableName, key, this[key].value);
-    }
-    this.reset = (key) => {
-      this[key].value = this[key].max;
-      this.props.changeTable(this.tableName, key, this[key].value);
-    }
 
+    var slug = _.get(this, 'props.rowData.slug');
+
+    this.subtract = (amount) => {
+      var value = _.get(this, 'props.rowData.value', 0) - amount;
+      this.props.changeRow(slug, value);
+    }
+    this.add = (amount) => {
+      var value = _.get(this, 'props.rowData.value', 0) + amount;
+      this.props.changeRow(slug, value);
+    }
+    this.reset = () => {
+      var value = _.get(this, 'props.rowData.max', 0);
+      this.props.changeRow(slug, value);
+    }
+    this.buildNumberEdit = () => {
+      if (_.get(this.props, 'rowData.editFields.number', false)) {
+        return ([
+          <td key='add'>
+            <button onClick={ () => { return this.add(1) } }>+</button>
+          </td>,
+          <td key='subtract'>
+            <button onClick={ () => { return this.subtract(1) } }>-</button>
+          </td>,
+          <td key='reset'>
+            <button onClick={ () => { return this.reset() } }><i className='material-icons md-18'>replay</i></button>
+          </td>
+          ]
+        )
+      }
+    }
   }
+
 
   render () {
     return (
       <tr>
         {buildCells(this.props.values, this.props)}
+        {this.buildNumberEdit(this.props)}
       </tr>
     )
   }

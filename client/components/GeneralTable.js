@@ -41,7 +41,7 @@ var buildRow = (columns, rowData, state) => {
   var values = _.map(columns, (column, index) => {
       return buildValue(rowData, column);
     })
-  return (<GeneralRow changeRow={ state.changeRow } key={ rowData.orderPriority } values={ values }/>)
+  return (<GeneralRow rowData={ rowData } changeRow={ state.changeRow } key={ rowData.orderPriority } values={ values }/>)
 }
 
 var buildValue = (rowData, column) => {
